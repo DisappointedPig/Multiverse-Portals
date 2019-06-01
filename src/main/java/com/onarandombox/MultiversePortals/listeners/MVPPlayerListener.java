@@ -15,7 +15,7 @@ import com.onarandombox.MultiversePortals.WorldEditConnection;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.Material;
-import org.bukkit.TravelAgent;
+//import org.bukkit.TravelAgent;
 import org.bukkit.block.Block;
 import org.bukkit.block.BlockFace;
 import org.bukkit.entity.Player;
@@ -33,7 +33,7 @@ import com.onarandombox.MultiverseCore.api.MVDestination;
 import com.onarandombox.MultiverseCore.api.MultiverseWorld;
 import com.onarandombox.MultiverseCore.api.SafeTTeleporter;
 import com.onarandombox.MultiverseCore.destination.InvalidDestination;
-import com.onarandombox.MultiverseCore.utils.MVTravelAgent;
+//import com.onarandombox.MultiverseCore.utils.MVTravelAgent;
 import com.onarandombox.MultiversePortals.MVPortal;
 import com.onarandombox.MultiversePortals.MultiversePortals;
 import com.onarandombox.MultiversePortals.PortalPlayerSession;
@@ -247,7 +247,7 @@ public class MVPPlayerListener implements Listener {
                     event.setCancelled(true);
                     return;
                 }
-                TravelAgent agent = new MVTravelAgent(this.plugin.getCore(), portalDest, event.getPlayer());
+//                 TravelAgent agent = new MVTravelAgent(this.plugin.getCore(), portalDest, event.getPlayer());
                 event.setTo(portalDest.getLocation(event.getPlayer()));
                 if (portalDest.useSafeTeleporter()) {
                     SafeTTeleporter teleporter = this.plugin.getCore().getSafeTTeleporter();
@@ -270,10 +270,11 @@ public class MVPPlayerListener implements Listener {
                     }
                 }
 
-                event.setPortalTravelAgent(agent);
-                event.useTravelAgent(true);
-                MVPortalEvent portalEvent = new MVPortalEvent(portalDest, event.getPlayer(), agent, portal);
-                this.plugin.getServer().getPluginManager().callEvent(portalEvent);
+//                 event.setPortalTravelAgent(agent);
+//                 event.useTravelAgent(true);
+//                MVPortalEvent portalEvent = new MVPortalEvent(portalDest, event.getPlayer(), agent, portal);
+					MVPortalEvent portalEvent = new MVPortalEvent(portalDest, event.getPlayer(), portal);
+	                this.plugin.getServer().getPluginManager().callEvent(portalEvent);
 
                 if (portalEvent.isCancelled()) {
                     event.setCancelled(true);

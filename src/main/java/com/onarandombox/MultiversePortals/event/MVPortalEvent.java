@@ -8,7 +8,7 @@
 package com.onarandombox.MultiversePortals.event;
 
 import org.bukkit.Location;
-import org.bukkit.TravelAgent;
+// import org.bukkit.TravelAgent;
 import org.bukkit.entity.Player;
 import org.bukkit.event.Cancellable;
 import org.bukkit.event.Event;
@@ -26,7 +26,7 @@ public class MVPortalEvent extends Event implements Cancellable {
     private Player teleportee;
     private MVPortal sendingPortal;
     private MVDestination destination;
-    private TravelAgent travelAgent;
+//     private TravelAgent travelAgent;
     private boolean isCancelled;
 
     /**
@@ -35,23 +35,25 @@ public class MVPortalEvent extends Event implements Cancellable {
      * @deprecated use {@link MVPortalEvent(MVDestination, Player, TravelAgent, MVPortal)}
      *             instead.
      */
+//    public MVPortalEvent(MVDestination destination, Player teleportee, TravelAgent travelAgent) {
     @Deprecated
-    public MVPortalEvent(MVDestination destination, Player teleportee, TravelAgent travelAgent) {
+    public MVPortalEvent(MVDestination destination, Player teleportee) {
         this.teleportee = teleportee;
         this.destination = destination;
-        this.travelAgent = travelAgent;
+//         this.travelAgent = travelAgent;
     }
 
-    public MVPortalEvent(MVDestination destination, Player teleportee, TravelAgent travelAgent, MVPortal sendingPortal) {
+//    public MVPortalEvent(MVDestination destination, Player teleportee, TravelAgent travelAgent, MVPortal sendingPortal) {
+    public MVPortalEvent(MVDestination destination, Player teleportee, MVPortal sendingPortal) {
         this.teleportee = teleportee;
         this.destination = destination;
-        this.travelAgent = travelAgent;
+//         this.travelAgent = travelAgent;
         this.sendingPortal = sendingPortal;
     }
 
-    public MVPortalEvent(MVDestination destination, Player teleportee) {
-        this(destination, teleportee, null, null);
-    }
+//     public MVPortalEvent(MVDestination destination, Player teleportee) {
+//         this(destination, teleportee, null, null);
+//     }
 
     private static final HandlerList HANDLERS = new HandlerList();
 
@@ -106,10 +108,11 @@ public class MVPortalEvent extends Event implements Cancellable {
      * @return A {@link PortalType}
      */
     public PortalType getPortalType() {
-        if (this.travelAgent == null) {
-            return PortalType.Legacy;
-        }
-        return PortalType.Legacy;
+//         if (this.travelAgent == null) {
+//             return PortalType.Legacy;
+//         }
+//         return PortalType.Legacy;
+			return PortalType.Normal;
     }
 
     /**
@@ -117,9 +120,9 @@ public class MVPortalEvent extends Event implements Cancellable {
      *
      * @return The {@link TravelAgent}.
      */
-    public TravelAgent getTravelAgent() {
-        return this.travelAgent;
-    }
+//     public TravelAgent getTravelAgent() {
+//         return this.travelAgent;
+//     }
 
     /**
      * Returns the Portal sending the player
